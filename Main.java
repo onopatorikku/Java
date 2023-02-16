@@ -1,3 +1,8 @@
+//It is a program for gaining ability of recognizing musical notes by hearing only.
+//There's a generator that randomly plays one note and you have to play that note by clicking on a correct button (key), if you pick the wrong one you can try it again.
+//version 1.0
+//made by onopatorikku (Patryk Siekiera)
+
 package PerfectPitchPiano;
 
 import javax.sound.sampled.AudioInputStream;
