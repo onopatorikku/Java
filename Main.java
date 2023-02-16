@@ -1,9 +1,7 @@
-//It is a program for gaining ability of recognizing musical notes by hearing only.
-//There's a generator that randomly plays one note and you have to play that note by clicking on a correct button (key), if you pick the wrong one you can try it again.
-//version 1.0
-//made by onopatorikku (Patryk Siekiera)
-
 package PerfectPitchPiano;
+
+//Made by Patryk Siekiera, 2023
+//version 1.1
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -14,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import java.awt.Color;
 import java.awt.event.*;
 import java.io.File;
 import java.util.Random;
@@ -35,30 +34,59 @@ public class Main {
 		
 		randomButton.addActionListener(randomButtonListener);
 		
+		//Repeat button
+		JButton repeatButton = new JButton("Repeat");
+		panel.add(repeatButton);
+		
+		repeatButton.addActionListener(repeatButtonListener);
+		
 		//Buttons for playing notes
 		JButton noteButton1 = new JButton("C");
+		noteButton1.setBackground(Color.WHITE);
 		panel.add(noteButton1);
+		
 		JButton noteButton2 = new JButton("C#");
+		noteButton2.setBackground(Color.BLACK);
 		panel.add(noteButton2);
+		
 		JButton noteButton3 = new JButton("D");
+		noteButton3.setBackground(Color.WHITE);
 		panel.add(noteButton3);
+		
 		JButton noteButton4 = new JButton("D#");
+		noteButton4.setBackground(Color.BLACK);
 		panel.add(noteButton4);
+		
 		JButton noteButton5 = new JButton("E");
+		noteButton5.setBackground(Color.WHITE);
 		panel.add(noteButton5);
+		
 		JButton noteButton6 = new JButton("F");
+		noteButton6.setBackground(Color.WHITE);
 		panel.add(noteButton6);
+		
 		JButton noteButton7 = new JButton("F#");
+		noteButton7.setBackground(Color.BLACK);
 		panel.add(noteButton7);
+		
 		JButton noteButton8 = new JButton("G");
+		noteButton8.setBackground(Color.WHITE);
 		panel.add(noteButton8);
+		
 		JButton noteButton9 = new JButton("G#");
+		noteButton9.setBackground(Color.BLACK);
 		panel.add(noteButton9);
+		
 		JButton noteButton10 = new JButton("A");
+		noteButton10.setBackground(Color.WHITE);
 		panel.add(noteButton10);
+		
 		JButton noteButton11 = new JButton("Bb");
+		noteButton11.setBackground(Color.BLACK);
 		panel.add(noteButton11);
+		
 		JButton noteButton12 = new JButton("B");
+		noteButton12.setBackground(Color.WHITE);
 		panel.add(noteButton12);
 		
 		//Adding listeners for other notes
@@ -94,7 +122,210 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				randomNr = random.nextInt(12);
+				ifMethod();
+			}
+		};
+		
+		static ActionListener repeatButtonListener = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ifMethod();
+			}
+		};
+		
+		 static ActionListener cNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "C.wav";
 				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 0;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener cSharpNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "Csharp.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 1;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener dNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "D.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 2;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener dSharpNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "Dsharp.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 3;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener eNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "E.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 4;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener fNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "F.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 5;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener fSharpNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "Fsharp.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 6;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener gNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "G.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 7;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener gSharpNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "Gsharp.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 8;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener aNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "A.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 9;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener bFlatNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "Bflat.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 10;
+				messageDialogs();
+			}
+		};
+		
+		static ActionListener bNoteButtonListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				notePath = "B.wav";
+				try {
+					PlayNote();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				note = 11;
+				messageDialogs();
+			}
+		};
+		
+		//Method for playing sounds
+		public static void PlayNote() throws Exception{
+			File file = new File(notePath);
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioStream);
+			clip.start();
+		}
+		
+		//Method for random and repeat
+		public static void ifMethod() {
+			try {
 				if(randomNr == 0) {
 					notePath = "C.wav";
 					PlayNote();
@@ -135,244 +366,15 @@ public class Main {
 				} catch(Exception e2) {
 					e2.printStackTrace();
 				}
-			}
-		};
+		}
 		
-		 static ActionListener cNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "C.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 0;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
+		//Method for dialog messages
+		public static void messageDialogs() {
+			if (randomNr == note) {
+				JOptionPane.showMessageDialog(null, "Correct!");
+			} else {
+				JOptionPane.showMessageDialog(null, "Wrong, try again.");
 			}
-		};
-		
-		static ActionListener cSharpNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "Csharp.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 1;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener dNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "D.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 2;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener dSharpNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "Dsharp.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 3;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener eNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "E.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 4;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener fNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "F.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 5;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener fSharpNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "Fsharp.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 6;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener gNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "G.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 7;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener gSharpNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "Gsharp.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 8;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener aNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "A.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 9;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener bFlatNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "Bflat.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 10;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		static ActionListener bNoteButtonListener = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				notePath = "B.wav";
-				try {
-					PlayNote();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				note = 11;
-				if (randomNr == note) {
-					JOptionPane.showMessageDialog(null, "Correct!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Wrong, try again.");
-				}
-			}
-		};
-		
-		//Method for playing sounds
-		public static void PlayNote() throws Exception{
-			File file = new File(notePath);
-			AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioStream);
-			clip.start();
 		}
 }
 
